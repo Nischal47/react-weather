@@ -5,23 +5,23 @@ import "./App.css"
 
 function App() {
 
-    const [query,setQuery] = useState('');
+    const [location,setLocation] = useState('');
     const [weather,setWeather] = useState({});
 
     const changeHandler = (event) =>{
-        setQuery(event.target.value)
+        setLocation(event.target.value)
     }
 
     const handleClick = async () => {
-        const data = await fetchWeather(query);
+        const data = await fetchWeather(location);
 console.log("Hello")
         setWeather(data);
-        setQuery('');
+        setLocation('');
     }
 
   return (
       <div className="app">
-          <input type="text"className="location"placeholder="Enter Location..."value={query} onChange={changeHandler}/>
+          <input type="text"className="location"placeholder="Enter Location..."value={location} onChange={changeHandler}/>
            <button onClick={handleClick}>Get Weather</button>
           {weather.main && (
               <div className="city">
